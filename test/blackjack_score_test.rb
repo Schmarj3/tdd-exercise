@@ -18,11 +18,67 @@ describe 'Blackjack Score' do
     score = blackjack_score(hand)
 
     # Assert <-  You do this part!
-
+    expect(score).must_be_instance_of Integer
   end
 
   it 'facecards have values calculated correctly' do
+    # Arrange
+    hand = ['Queen', 4]
 
+    expected_score = 14
+    # Act
+    score = blackjack_score(hand)
+
+    # Assert <-  You do this part!
+    expect(score).must_equal expected_score
+  end
+
+  it 'facecards have values calculated correctly' do
+    # Arrange
+    hand = ['Jack', 4]
+
+    expected_score = 14
+    # Act
+    score = blackjack_score(hand)
+
+    # Assert <-  You do this part!
+    expect(score).must_equal expected_score
+  end
+
+  it 'facecards have values calculated correctly' do
+    # Arrange
+    hand = ['King', 4]
+
+    expected_score = 14
+    # Act
+    score = blackjack_score(hand)
+
+    # Assert <-  You do this part!
+    expect(score).must_equal expected_score
+  end
+
+  it 'facecards have values calculated correctly' do
+    # Arrange
+    hand = ['Ace', 4, 16]
+
+    expected_score = 21
+    # Act
+    score = blackjack_score(hand)
+
+    # Assert <-  You do this part!
+    expect(score).must_equal expected_score
+  end
+
+  it 'facecards have values calculated correctly' do
+    # Arrange
+    hand = ['Ace', 4]
+
+    expected_score = 15
+    # Act
+    score = blackjack_score(hand)
+
+    # Assert <-  You do this part!
+    expect(score).must_equal expected_score
   end
 
   it 'calculates aces as 11 where it does not go over 21' do
