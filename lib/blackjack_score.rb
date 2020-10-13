@@ -7,8 +7,7 @@
 # 2.  What edge cases can you determine?  Name at least 3.
   # Maybe all face cards
   # all aces
-  # all number car
-  # dealing more than 4 of a particular card
+  # a Joker
 # 3.  How would you **test** these cases?
   # Have card hand in array as input and return the score
 
@@ -23,6 +22,34 @@
 VALID_CARDS = [2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King', 'Ace']
 
 def blackjack_score(hand)
-  score = hand.reduce(:+)
-  return score
+  score = 0
+  length = hand.length
+  aces_in_hand = hand.count('Ace')
+
+  raise ArgumentError if length > 5 || length < 2
+
+  hand.each do |card|
+    case card
+    when 2, 3, 4, 5, 6, 7, 8, 9, 10
+      score += card
+    when 'Jack', 'Queen', 'King'
+      score += 10
+    when 'Ace'
+      next
+    else
+      return 'Invalid hand.'
+    end
+  end
+
+  until aces_in_hand == 0
+    if score > 10
+      score += 1
+      aces_in_hand -= 1
+    else
+      score += 11
+      aces_in_hand -= 1
+    end
+  end
+
+  return score > 21 ? (raise ArgumentError) : (score)
 end
